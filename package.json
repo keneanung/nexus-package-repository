@@ -42,5 +42,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "."
+  "homepage": ".",
+  "devDependencies": {
+    "node-fetch": "^3.2.4",
+    "yaml": "^2.1.0"
+  }
 }

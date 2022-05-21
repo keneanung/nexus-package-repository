@@ -1,7 +1,7 @@
 name: Deploy Nightly
 
 on:
-  schedule: 
+  schedule:
     - cron: 15 14 * * *
 
   workflow_dispatch:
@@ -14,16 +14,18 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.2.0
-        
+
       - name: install dependencies
         run: npm ci
+      - name: generate repository json "db"
+        run: node tools/generate-repository-json.mjs
       - name: build release code
         run: npm run build
-        
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           folder: build/
           branch: gh-pages
-      
-      
+
+

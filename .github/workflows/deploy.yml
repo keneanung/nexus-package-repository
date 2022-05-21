@@ -1,0 +1,29 @@
+name: Deploy Nightly
+
+on:
+  schedule: 
+    - cron: 15 14 * * *
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.2.0
+        
+      - name: install dependencies
+        run: npm ci
+      - name: build release code
+        run: npm run build
+        
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          folder: build/
+          branch: gh-pages
+      
+      

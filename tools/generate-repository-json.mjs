@@ -8,6 +8,7 @@ const packages = YAML.parse(file);
 const repository = [];
 
 for (const [name, url] of Object.entries(packages)) {
+  console.log(`Fetching ${name}...`);
   const packageResponse = await fetch(url);
   const packageJson = await packageResponse.json();
   repository.push({

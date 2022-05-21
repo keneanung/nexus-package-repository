@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Event Bus",
+    "packageName": "eventbus",
+    "version": "0.4.0",
+    "description": "Event Bus description",
+    "url": "https://keneanung.github.io/nexus-event-bus/EventBus.nxs",
+    "dependencies": []
+  }
+]

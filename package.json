@@ -44,7 +44,7 @@
   },
   "homepage": ".",
   "devDependencies": {
-    "node-fetch": "^3.2.9",
+    "node-fetch": "^3.2.10",
     "yaml": "^2.1.1"
   }
 }

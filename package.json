@@ -45,6 +45,6 @@
   "homepage": ".",
   "devDependencies": {
     "node-fetch": "^3.2.10",
-    "yaml": "^2.1.1"
+    "yaml": "^2.1.2"
   }
 }

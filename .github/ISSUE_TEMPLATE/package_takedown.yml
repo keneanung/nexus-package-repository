@@ -1,0 +1,21 @@
+name: Package Takedown
+description: Use this template to request the removal of a package from the listing.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out this form to have a package removed from the listing.
+  - type: input
+    attributes:
+      label: package name
+      description: The name of the package you request the removal of.
+      placeholder: ex. Event Bus
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: reason
+      description: Please give your reasoning here.
+      placeholder: Your reasoning
+    validations:
+      required: true

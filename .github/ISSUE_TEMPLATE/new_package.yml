@@ -1,0 +1,36 @@
+name: New Package
+description: Use this template if you want to request a new package to be added to the listing.
+labels:
+  - "new package"
+title: "[Package]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your request to add a new package to the listing. Please fill out the form below so we have all the information needed to fulfill the request.
+  - type: input
+    attributes:
+      label: package name
+      description: The name of the package you request to add to the listing.
+      placeholder: ex. Event Bus
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: url to the NXS file
+      description: The URL where the NXS file can be downloaded. This should be a stable URL that does not change with versions to minimize the maintenance burden.
+      placeholder: ex. https://keneanung.github.io/nexus-event-bus/EventBus.nxs
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: package author contact
+      description: A way to contact the package author in case we need it. Can be an email (preferred) or Discord user. Other ways of contact may also be acceptable, but the decision is done on a case by case basis.
+      placeholder: ex. keneanung@googlemail.com
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: comment
+      description: You can leave any additional comment here.
+      placeholder: Your comment

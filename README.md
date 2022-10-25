@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# The base repository for the Iron Realms Nexus Repository
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the default repository for the Iron Realms Nexus client. In this repository, we track the location of packages for the Nexus client and provide the required metadata for the [Nexus Package Manager](https://keneanung.github.io/nexus-package-manager/). This list is a community project and in no way endorsed or linked to the company Iron Realms.
 
-## Available Scripts
+## Adding your package
 
-In the project directory, you can run:
+If you want to have your package listed here, you have two options.
 
-### `npm start`
+You can either create a Pull Request that adds a line to the [`packages.yaml`](https://github.com/keneanung/nexus-package-repository/blob/development/packages.yaml) file. The format is `"<readable package name>": <url to the NXS file>`. The published list at <https://keneanung.github.io/nexus-package-repository> is updated once a day, though I will try to remember to update it after merging a PR as well.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The second option is to add an [issue](https://github.com/keneanung/nexus-package-repository/issues/new?template=new_package.yml) about the addition. Please note that this requires additional manual steps for us and may require some time.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Disallowed packages
 
-### `npm test`
+This repository does not allow packages that create spam, contain malware or are forbidden by the respective game designer's rules in a game. Breaking this rule results in the immediate deletion of the offending package from the listing. For special cases, the removal of all packages of an author is also possible.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Removal of packages
 
-### `npm run build`
+Packages can be removed from this package at any time without further notice at the maintainer's discretion without any reason given. In case you notice any of the listed packages falls in the `forbidden` category above, please open a Pull Request or [an issue](https://github.com/keneanung/nexus-package-repository/issues/new?template=package_takedown.yml).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting your package to work with the package listing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The good news is: To have a package included in the listing, no changes to your package file are necessary. Any default exported package from Nexus will work.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+However, to make the package work optimally with the package manager, you should consider including some add additional keys in the top-level JSON object:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `version`: The version of the package. This `string` allows the package manager to notify the user of updates of installed packages. Ideally, this is a [semantic version](https://semver.org/).
+- `dependencies`: An array of `strings`. Each string is the package name of another package that this package depends on as it is given **inside the NXS package**. This allows the package manager to check for installed dependencies and possibly install them first.

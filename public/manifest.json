@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Nexus 3 Package Listing",
+  "name": "Package listing for the Iron Realms Nexus 3 client.",
   "icons": [
     {
       "src": "favicon.ico",

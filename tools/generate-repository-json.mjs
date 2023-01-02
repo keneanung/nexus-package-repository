@@ -25,6 +25,7 @@ for (const [name, url] of Object.entries(packages)) {
     description: packageJson.description,
     url,
     dependencies: packageJson.dependencies || [],
+    website: packageJson.website,
   });
 }
 

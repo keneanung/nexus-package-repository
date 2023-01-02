@@ -11,6 +11,7 @@ type PackageData = {
   description: string;
   url: string;
   dependencies: string[];
+  website: string;
 };
 
 function RepositoryTable(props: { data: RepositoryData }) {
@@ -22,7 +23,7 @@ function RepositoryTable(props: { data: RepositoryData }) {
           <th>Package Name</th>
           <th>Version</th>
           <th>Description</th>
-          <th>Manual Download</th>
+          <th>Links</th>
           <th>Dependencies</th>
         </tr>
       </thead>
@@ -34,7 +35,8 @@ function RepositoryTable(props: { data: RepositoryData }) {
             <td>{packageData.version}</td>
             <td>{packageData.description}</td>
             <td>
-              <a style={{color: 'lightblue'}} href={packageData.url}>link</a>
+              {packageData.website !== undefined ? <><a style={{ color: 'lightblue' }} href={packageData.website}>Website</a>&nbr;</> : null}
+              <a style={{ color: 'lightblue' }} href={packageData.url}>Download</a>
             </td>
             <td>{packageData.dependencies.join(", ")}</td>
           </tr>
@@ -69,7 +71,7 @@ export function App() {
 
   return (
     <div className="App">
-      <header style={{color: 'white', textAlign: "center", fontSize: '22pt'}}>List of Nexus Packages available through this repository</header>
+      <header style={{ color: 'white', textAlign: "center", fontSize: '22pt' }}>List of Nexus Packages available through this repository</header>
       {loading ? (
         <Spinner animation="border" role="status" variant="light">
           <span className="visually-hidden">Loading...</span>

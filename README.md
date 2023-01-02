@@ -22,7 +22,7 @@ Packages can be removed from this package at any time without further notice at 
 
 The good news is: To have a package included in the listing, no changes to your package file are necessary. Any default exported package from Nexus will work.
 
-However, to make the package work optimally with the package manager, you should consider including some add additional keys in the top-level JSON object:
+However, to make the package work optimally with the package manager, you should consider including some additional keys in the top-level JSON object:
 
 - `version`: The version of the package. This `string` allows the package manager to notify the user of updates of installed packages. Ideally, this is a [semantic version](https://semver.org/).
 - `dependencies`: An array of `strings`. Each string is the package name of another package that this package depends on as it is given **inside the NXS package**. This allows the package manager to check for installed dependencies and possibly install them first.

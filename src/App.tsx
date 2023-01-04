@@ -35,7 +35,7 @@ function RepositoryTable(props: { data: RepositoryData }) {
             <td>{packageData.version}</td>
             <td>{packageData.description}</td>
             <td>
-              {packageData.website !== undefined ? <><a style={{ color: 'lightblue' }} href={packageData.website}>Website</a>&nbr;</> : null}
+              {packageData.website !== undefined ? <><a style={{ color: 'lightblue' }} href={packageData.website}>Website</a>&nbsp;</> : null}
               <a style={{ color: 'lightblue' }} href={packageData.url}>Download</a>
             </td>
             <td>{packageData.dependencies.join(", ")}</td>

@@ -13,19 +13,26 @@ for (const [name, url] of Object.entries(packages)) {
   const packageResponse = await fetch(url);
   const body = await packageResponse.text();
   const packageJson = JSON.parse(body);
-  if(packageJson.version === undefined){
+  const metaFunctionString = packageJson.items.find(item => item.name === '__meta' && item.type == 'function')
+  const metaFunction = metaFunctionString !== undefined ? JSON.parse(metaFunctionString.code) : undefined
+  const metaData = {
+    version: metaFunction?.version ?? packageJson.version,
+    website : metaFunction?.website ?? packageJson.website,
+    dependencies: metaFunction?.dependencies?? packageJson.dependencies,
+  }
+  if(metaData.version === undefined){
     const hashSum = crypto.createHash("SHA256");
     hashSum.update(body);
-    packageJson.version = hashSum.digest('hex').substring(0, 6);
+    metaData.version = hashSum.digest('hex').substring(0, 6);
   }
   repository.push({
     name,
     packageName: packageJson.name,
-    version: packageJson.version,
+    version: metaData.version,
     description: packageJson.description,
     url,
-    dependencies: packageJson.dependencies || [],
-    website: packageJson.website,
+    dependencies: metaData.dependencies || [],
+    website: metaData.website,
   });
 }
 

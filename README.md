@@ -22,8 +22,74 @@ Packages can be removed from this package at any time without further notice at 
 
 The good news is: To have a package included in the listing, no changes to your package file are necessary. Any default exported package from Nexus will work.
 
-However, to make the package work optimally with the package manager, you should consider including some additional keys in the top-level JSON object:
+However, to make the package work optimally with the package manager, you should consider including some additional data. This data can be added to the JSON of the NXS file directly at the top level or as a top level function named `__meta` that only contains an JSON object with the given keys.
 
 - `version`: The version of the package. This `string` allows the package manager to notify the user of updates of installed packages. Ideally, this is a [semantic version](https://semver.org/). If no version is found in the package, the file is hashed and its start is used as a version string to recognize updates.
 - `dependencies`: An array of `strings`. Each string is the package name of another package that this package depends on as it is given **inside the NXS package**. This allows the package manager to check for installed dependencies and possibly install them first.
 - `website`: If you have a homepage with more information about the package, add this value.
+
+Examples:
+
+An example for additional keys in the NXS-JSON object directly:
+
+```json
+{
+    "type": "group",
+    "name": "test",
+    "enabled": true,
+    "items": [
+        {
+            "type": "function",
+            "name": "onInstall",
+            "enabled": true,
+            "code": "// Place any code here you'd like to autorun when the package is installed"
+        },
+        {
+            "type": "function",
+            "name": "onUninstall",
+            "enabled": true,
+            "code": "// Place any code here you'd like to autorun when the package is uninstalled"
+        }
+    ],
+    "description": "",
+    "version": "1.0.0",
+    "website": "https://foo.com",
+    "dependencies": [
+        "eventBus"
+    ]
+}
+```
+
+An example for a top-level `__meta` function that only contains the the meta data:
+
+```json
+{
+    "type": "group",
+    "name": "test",
+    "enabled": true,
+    "items": [
+        {
+            "type": "function",
+            "name": "onInstall",
+            "enabled": true,
+            "code": "// Place any code here you'd like to autorun when the package is installed"
+        },
+        {
+            "type": "function",
+            "name": "onUninstall",
+            "enabled": true,
+            "code": "// Place any code here you'd like to autorun when the package is uninstalled"
+        },
+        {
+            "type": "function",
+            "name": "__meta",
+            "enabled": true,
+            "code": "{\n  \"version\": \"0.0.1\",\n  \"website\": \"http://foo.com\",\n   \"dependencies\": [\n     \"eventBus\"\n   ]\n}"
+        }
+    ],
+    "description": ""
+}
+```
+
+In the UI, the function looks like this:
+![Screenshot showing the __meta function](MetadataExample.png)

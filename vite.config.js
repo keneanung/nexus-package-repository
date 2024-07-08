@@ -7,6 +7,6 @@ export default defineConfig(() => {
       outDir: 'build',
     },
     plugins: [react()],
-    base: "/nexus-script-repository/",
+    base: "/nexus-package-repository/",
   };
 });

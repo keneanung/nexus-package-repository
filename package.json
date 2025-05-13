@@ -45,6 +45,6 @@
     "@vitejs/plugin-react": "^4.3.4",
     "node-fetch": "^3.3.2",
     "vite": "^6.3.5",
-    "yaml": "^2.7.0"
+    "yaml": "^2.7.1"
   }
 }

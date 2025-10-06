@@ -44,7 +44,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.4",
     "node-fetch": "^3.3.2",
-    "vite": "^7.1.7",
+    "vite": "^7.1.9",
     "yaml": "^2.8.1"
   }
 }

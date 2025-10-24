@@ -42,7 +42,7 @@
   },
   "homepage": ".",
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-react": "^5.1.0",
     "node-fetch": "^3.3.2",
     "vite": "^7.1.12",
     "yaml": "^2.8.1"
